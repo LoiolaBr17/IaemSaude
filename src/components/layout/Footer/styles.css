@@ -1,0 +1,42 @@
+.footer {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #EEE;
+    color: #444;
+    border-top: 1px solid #666;
+    text-align: center;
+    flex-direction: column;
+}
+
+
+
+.footer h3 {
+    font-size: 1.7em;
+    color: #000;
+}
+
+.footer h4 {
+    margin-top: .3em;
+    color: #444;
+}
+
+.footer p {
+    margin-top: .7em;
+    color: #444;
+}
+
+.footer a {
+    background-color: #000;
+    color: #fff;
+    margin-top: .7em;
+    padding: .9em;
+    text-decoration: none;
+    transition: .5s;
+}
+
+.footer a:hover {
+    background-color: #fff;
+    color: #000;
+}
