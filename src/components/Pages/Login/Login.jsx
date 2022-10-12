@@ -18,7 +18,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    login(user)
+    console.log(typeof login)
   }
 
   return (

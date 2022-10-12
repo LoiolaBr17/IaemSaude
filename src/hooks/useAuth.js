@@ -21,11 +21,29 @@ const useAuth = () => {
     }, [])
 
 
-    const login = async () => {
-        
+    async function login(user){
+        let msgText = 'Login realizado com sucesso'
+        let msgtype = 'success'
+
+        try {
+
+            const data = await api.post('users/login', user)
+            .then((response) => {
+                return response.data
+            })
+
+            console.log(data.token)
+            // await authUser(data.token)
+
+        }catch(error){
+            msgText = 'Erro ao efetuar o login'
+            msgtype = 'error'
+        }
+
+        setFlashMessage(msgText,msgtype)
     }
 
-    const authUser = (data) => {
+    const authUser = async (data) => {
         setAuthenticated(true)
         localStorage.setItem('token', JSON.stringify(data.token))
         navigate('/manager')
@@ -45,7 +63,7 @@ const useAuth = () => {
 
    
 
-    return {  authenticated, login, logout }
+    return {  authenticated, logout, login }
 }
 
 export default useAuth
