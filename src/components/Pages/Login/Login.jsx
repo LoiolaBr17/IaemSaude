@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from "react-router-dom"
 
 import Input from "../../form/Input/Input"
@@ -7,13 +8,15 @@ import '../../Form/FormCSS/styles.css'
 
 
 const Login = () => {
+  const [ user,setUser ] = useState({})
 
-  const handleChange = () => {
-
+  const handleChange = (e) => {
+    setUser({...user, [e.target.name]: e.target.value})
   }
 
-  const handleSubmit = () => {
-
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(user)
   }
 
   return (
