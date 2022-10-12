@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import useFlashMessage from './useFlashMessage'
 
 
-const useAuth = () => {
+export default function useAuth() {
     const [authenticated, setAuthenticated] = useState(false)
     const { setFlashMessage } = useFlashMessage()
     let navigate = useNavigate()
@@ -21,7 +21,7 @@ const useAuth = () => {
     }, [])
 
 
-    async function login(user){
+    const login = async (user) => {
         let msgText = 'Login realizado com sucesso'
         let msgtype = 'success'
 
@@ -66,4 +66,3 @@ const useAuth = () => {
     return {  authenticated, logout, login }
 }
 
-export default useAuth

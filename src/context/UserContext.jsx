@@ -6,6 +6,7 @@ const Context = createContext()
 
 const UserProvider = ({children}) => {
     const { authenticated, logout, login } = useAuth
+    console.log(typeof logout + ' teste')
 
     return (
         <Context.Provider value={{authenticated, logout, login}}>
