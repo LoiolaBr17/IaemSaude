@@ -10,6 +10,7 @@ import './App.css'
 import Navbar from './components/layout/Navbar/Navbar'
 import Footer from './components/layout/Footer/Footer'
 import Container from './components/layout/Container/Container'
+import Message from './components/layout/Message/Message'
 
 /* Pages */
 import Home from './components/Pages/Home/Home'
@@ -24,6 +25,7 @@ const App = () => {
     <Router>
       <UserProvider>
         <Navbar />
+        <Message />
         <Container>
           <Routes>
             <Route path='/' element={<Home />} />

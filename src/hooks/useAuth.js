@@ -17,7 +17,7 @@ export default function useAuth() {
             api.defaults.headers.Authorization = `${JSON.parse(token)}`
             setAuthenticated(true)
         }
-
+        
     }, [])
 
 
@@ -32,8 +32,7 @@ export default function useAuth() {
                 return response.data
             })
 
-            console.log(data.token)
-            // await authUser(data.token)
+            await authUser(data)
 
         }catch(error){
             msgText = 'Erro ao efetuar o login'
@@ -45,7 +44,8 @@ export default function useAuth() {
 
     const authUser = async (data) => {
         setAuthenticated(true)
-        localStorage.setItem('token', JSON.stringify(data.token))
+        console.log(data.message)
+        localStorage.setItem('token', JSON.stringify(data.message))
         navigate('/manager')
     }
 
@@ -60,8 +60,6 @@ export default function useAuth() {
 
         setFlashMessage(msgText,msgType)
     }
-
-   
 
     return {  authenticated, logout, login }
 }
