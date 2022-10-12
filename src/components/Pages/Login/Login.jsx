@@ -1,14 +1,16 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Link } from "react-router-dom"
 
 import Input from "../../form/Input/Input"
 
 import '../../Form/FormCSS/styles.css'
 
-
+/* Context */
+import { Context } from '../../../context/UserContext'
 
 const Login = () => {
   const [ user,setUser ] = useState({})
+  const { login } = useContext(Context)
 
   const handleChange = (e) => {
     setUser({...user, [e.target.name]: e.target.value})
@@ -16,7 +18,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(user)
+    login(user)
   }
 
   return (
