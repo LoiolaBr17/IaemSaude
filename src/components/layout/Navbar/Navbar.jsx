@@ -9,7 +9,7 @@ import {Context} from '../../../context/UserContext'
 import './styles.css'
 
 const Navbar = () => {
-    const {authenticated} = useContext(Context)
+    const { authenticated, logout } = useContext(Context)
 
     return (
         <nav className="navbar">
@@ -21,7 +21,7 @@ const Navbar = () => {
             (
                 <>
                     <li><Link to="/manager">Gerenciar Editais</Link></li>
-                    <li>Sair</li>
+                    <li onClick={logout}>Sair</li>
                 </>
             ) 
             : 
