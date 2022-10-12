@@ -1,8 +1,13 @@
+import './styles.css'
+
+/* Components */
+import Presentation from '../../Presentation/Presentation'
+
 const Home = () => {
     return (
-      <div className="App">
-        <h1>Home</h1>
-      </div>
+      <section>
+        <Presentation />
+      </section>
     )
   }
   
