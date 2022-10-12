@@ -9,6 +9,7 @@ import './App.css'
 /* Components */
 import Navbar from './components/layout/Navbar/Navbar'
 import Footer from './components/layout/Footer/Footer'
+import Container from './components/layout/Container/Container'
 
 /* Pages */
 import Home from './components/Pages/Home/Home'
@@ -19,11 +20,13 @@ const App = () => {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/manager' element={<Manager />} />
-      </Routes>
+      <Container>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/manager' element={<Manager />} />
+        </Routes>
+      </Container>
       <Footer />
     </Router>
   )
