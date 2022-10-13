@@ -10,7 +10,7 @@ const EdictCard = ({edict}) => {
                 <p>Status: {edict.noticeStatus ? 'Edital está aberto':'Edital esta fechado'} </p>
             </div>
 
-            <Link>Ver Detalhes</Link>
+            <Link to={`/edict/${edict.noticeID}`}>Ver Detalhes</Link>
         </div>
     )
 }
