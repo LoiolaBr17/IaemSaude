@@ -6,6 +6,7 @@ import './styles.css'
 
 /* Components */
 import Presentation from '../../Presentation/Presentation'
+import ContainerEdicts from '../../ContainerEdicts/ContainerEdicts'
 
 const Home = () => {
     const [edicts, setEdicts] = useState([])
@@ -26,7 +27,7 @@ const Home = () => {
           <Presentation />
         </div>
         <div>
-          {edicts.length === 0 && <p>Não há editais cadastrados.</p>}
+          {edicts.length > 0 && <ContainerEdicts edicts={edicts}/>}
         </div>
       </section>
     )
