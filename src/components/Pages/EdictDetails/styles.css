@@ -1,0 +1,11 @@
+.EdictDetails {
+    padding: 3em;
+}
+
+.EdictDetails h3 {
+    margin-top: 2em;
+    text-align: center;
+}
+.EdictDetails .openingData {
+    font-weight: bold;
+}
