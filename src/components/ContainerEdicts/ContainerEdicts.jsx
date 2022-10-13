@@ -1,8 +1,17 @@
+import EdictCard from '../EdictCard/EdictCard'
+
+import './styles.css'
+
 const ContainerEdicts = ({edicts}) =>{ 
     return (
-        <section>
-            <h2>Container dos editais</h2>
+        <section className='containerEdicts'>
+            <h2>Editais Cadastrados</h2>
             {edicts.length === 0 && <p>Não há editais cadastrados</p>}
+            {edicts.length > 0 && 
+                edicts.map((edict) => (
+                    <EdictCard edict={edict} key={edict.noticeID}/>
+                ))
+            }
         </section>
 
     )
