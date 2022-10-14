@@ -13,10 +13,10 @@ const Home = () => {
 
     useEffect(() => {
 
-      api.get('notices')
+      api.get('notices?limit=50')
       .then((response) => {
         setEdicts(response.data.notices)
-        console.log(edicts.length)
+        console.log(response.data.notices)
       })
 
     }, [])
@@ -27,7 +27,7 @@ const Home = () => {
           <Presentation />
         </div>
         <div>
-          {edicts.length > 0 && <ContainerEdicts edicts={edicts}/>}
+          {edicts && (<ContainerEdicts edicts={edicts}/>) }
         </div>
       </section>
     )

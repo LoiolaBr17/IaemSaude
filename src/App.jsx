@@ -17,6 +17,7 @@ import Home from './components/Pages/Home/Home'
 import Login from './components/Pages/Login/Login'
 import Manager from './components/Pages/Manager/Manager'
 import EdictDetails from './components/Pages/EdictDetails/EdictDetails'
+import AddEdict from './components/Pages/AddEdict/AddEdict'
 
 /* Context */
 import {UserProvider} from './context/UserContext'
@@ -33,6 +34,7 @@ const App = () => {
             <Route path='/login' element={<Login />} />
             <Route path='/manager' element={<Manager />} />
             <Route path='/edict/:id' element={<EdictDetails />}/>
+            <Route path='/edict/add' element={<AddEdict />} />
           </Routes>
         </Container>
         <Footer />
