@@ -8,8 +8,8 @@ const ContainerEdicts = ({edicts}) =>{
             <h2>Editais Cadastrados</h2>
             {edicts === undefined && <p>Não há editais cadastrados</p>}
             {edicts.length !== 0 > 0 && 
-                edicts.map((edict) => (
-                    <EdictCard edict={edict} key={edict.noticeID}/>
+                edicts.map((edict, index) => (
+                    <EdictCard edict={edict} key={index}/>
                 ))
             }
         </section>
