@@ -2,7 +2,8 @@
     display: flex;
     justify-content: space-between;
     padding: 1em 1em;
-    background-color: #7465FF;
+    background-color: #fff;
+    border-bottom: 1px solid #000;
 }
 
 .navbar_logo {
@@ -11,7 +12,8 @@
 }
 
 .navbar_logo img {
-    width: 9rem;
+    width: 14rem;
+    max-height: 90px;
     margin-right: 0.8em;
 }
 
@@ -24,19 +26,18 @@
 .navbar li,
 .navbar a {
     text-decoration: none;
-    color: #000;
+    color: #3c3c3c;
     font-weight: bold;
     cursor: pointer;
-    transition: .5s;
-    padding: .3em .8em;
-    border-radius: 5px;
+    transition: .3s;
+    padding: .2em .8em;
 } 
 
 .navbar li:hover {
-    color: #fff;
+    color: #604fff;
+    border-bottom: 5px solid #604fff;
 }
 
 .navbar li:hover > a{
-    color: #fff;
-    background-color: #000;
+    color: #604fff;
 }

@@ -8,7 +8,6 @@ import './styles.css'
 const EdictForm = ({handleSubmit, edictData, btnText}) => {
     const [edict, setEdict] = useState(edictData || {})
     const {setFlashMessage} = useFlashMessage()
-
     const handleChange = (e) => {
         setEdict({...edict, [e.target.name]: e.target.value})
     }
@@ -19,6 +18,7 @@ const EdictForm = ({handleSubmit, edictData, btnText}) => {
 
     const validateForm = () => {
         let isValid = true
+
         if(edict.noticeTitle === undefined || edict.noticeTitle === ''){
             isValid = false
             return isValid
@@ -28,9 +28,9 @@ const EdictForm = ({handleSubmit, edictData, btnText}) => {
         }else if(edict.noticeOpeningDate === undefined || edict.noticeOpeningDate === ''){
             isValid = false
             return isValid
-        }else if(edict.noticePDFDetails === undefined || edict.noticePDFDetails === ''){
-            isValid = false
-            return isValid
+        }else if(edict.noticePDFDetailsPath === undefined || edict.noticePDFDetailsPath === ''){
+            // isValid = false
+            // return isValid
         }else if(edict.noticeStatus === undefined || edict.noticeStatus === '' || edict.noticeStatus === 'escolha'){
             isValid = false
             return isValid
@@ -40,13 +40,13 @@ const EdictForm = ({handleSubmit, edictData, btnText}) => {
 
     const submit = (e) => {
         e.preventDefault()
-        
+
         if(validateForm()){
             handleSubmit(edict)
         }else{
             const msgType = 'error'
             const msgText = 'Preencha todos os campos' 
-            setFlashMessage(msgText,msgType)
+            setFlashMessage(msgText,msgType) 
         }
     }
 
@@ -85,12 +85,12 @@ const EdictForm = ({handleSubmit, edictData, btnText}) => {
                 name="noticePDFDetails"
                 placeholder="Digite o link de onde se encontra o edital"
                 handleOnChange={handleChange}
-                value={edict.noticePDFDetails || ''}
+                value={edict.noticePDFDetailsPath || edict.noticePDFDetails || ''}
             />
 
             <div className="status">
                 <label htmlFor="noticeStatus">Status do Edital</label>
-                <select name="noticeStatus" onChange={handleStatus}>
+                <select name="noticeStatus" onChange={handleStatus} value={edict.noticeStatus || ''}>
                     <option value="escolha">Escolha um Status</option>
                     <option value="true">Aberto</option>
                     <option value="false">Fechado</option>

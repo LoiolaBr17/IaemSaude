@@ -28,65 +28,48 @@ const Manager = () => {
 
     var axios = Axios.create()
         
-        await axios({
-            method: 'delete',
-            responseType: 'json',
-            headers: {
-                Authorization: `${JSON.parse(token)}`
-            },
-            url: `https://api.comsentimento.com.br/notices/${id}`,
+    await axios({
+      method: 'delete',
+      responseType: 'json',
+      headers: {
+        Authorization: `${JSON.parse(token)}`
+      },
+      url: `https://api.comsentimento.com.br/notices/${id}`,
             
-        })
-        .then(response => {
-             console.log(response)
-             msgText = "Edital removido com sucesso" 
-             msgType = "success"
-        })
-        .catch(error => {
-            msgText = "Não foi possível remover o edital" 
-            msgType = "error"
-        });
+    })
+    .then(response => {
+      const updatedEdicts = edicts.filter((edict) =>edict.noticeID !== id)
+      setEdicts(updatedEdicts)
+      msgText = "Edital removido com sucesso" 
+      msgType = "success"
+    })
+    .catch(error => {
+      msgText = "Não foi possível remover o edital" 
+      msgType = "error"
+    });
 
-      // const data = await api.delete(`/pets/${id}`, {
-      //   headers: {
-      //     Authorization: token,
-      //   }
-      // })
-      // .then((response) => {
-      //   const updatedEdicts = edicts.filter((edict) =>edict.noticeID != id)
-      //   setEdicts(updatedEdicts)
-      //   console.log(response)
-      // })
-      // .catch((err) => {
-      //   msgText = 'Erro ao remover o Edital'
-      //   msgType = 'error'
-      //   console.log(err)
-      // })
-      
+    setFlashMessage(msgText,msgType)
+  }
 
-      setFlashMessage(msgText,msgType)
-    }
+  return (
+    <section>
+      <div className="manager_header">
+        <h1>Editais Cadastrados</h1>
+        <Link to="/edict/add">Cadastrar Edital</Link>
+      </div>
 
-    return (
-      <section>
-        <div className="manager_header">
-          <h1>Editais Cadastrados</h1>
-          <Link to="/edict/add">Cadastrar Edital</Link>
-        </div>
-
-        <div className="manager_container">
-          {edicts && 
-            edicts.map((edict,index) => (
-              <div key={index} className='manager_row'>
-                <span className="bold">Edital: {edict.noticeTitle}</span>
-                <div className="actions">
-                  <Link to={`/edict/edit/${edict.noticeID}`}>Editar</Link>
-                  <button onClick={() => {removeEdict(edict.noticeID)}}>Excluir</button>
-                </div>
+      <div className="manager_container">
+        {edicts && 
+          edicts.map((edict,index) => (
+            <div key={index} className='manager_row'>
+              <span className="bold">Edital: {edict.noticeTitle}</span>
+              <div className="actions">
+                <Link to={`/edict/edit/${edict.noticeID}`}>Editar</Link>
+                <button onClick={() => {removeEdict(edict.noticeID)}}>Excluir</button>
               </div>
-            ))
-          }
-          {edicts.length === 0 && <p>Não há editais cadastrados</p>}
+            </div>
+          ))}
+          {edicts !== undefined && edicts.length === 0 && <p>Não há editais cadastrados</p>}
         </div>
       </section>
     )

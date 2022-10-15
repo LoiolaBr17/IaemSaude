@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 
-import Logo from '../../../assets/img/Logo.png'
+import Logo from '../../../assets/img/logo.png'
 
 /* Context */
 import {Context} from '../../../context/UserContext'
@@ -20,13 +20,17 @@ const Navbar = () => {
         {authenticated ? 
             (
                 <>
+                    <li><Link to="/">Início</Link></li>
                     <li><Link to="/manager">Gerenciar Editais</Link></li>
                     <li onClick={logout}>Sair</li>
                 </>
             ) 
             : 
             (
-                <li><Link to="/login">Entrar</Link></li>
+                <>
+                    <li><Link to="/">Início</Link></li>
+                    <li><Link to="/login">Entrar</Link></li>
+                </>
             )
 
             }
