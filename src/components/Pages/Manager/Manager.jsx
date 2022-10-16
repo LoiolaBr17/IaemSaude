@@ -11,16 +11,22 @@ import './styles.css'
 const Manager = () => {
   const [edicts, setEdicts] = useState([])
   const [token] = useState(localStorage.getItem('token') || '')
+  const [currentPage, setCurrentPage] = useState(0)
+  const [total, setTotal] = useState(0) 
+  const [displacement, setDisplacement] = useState(0)
+  const pages = Math.ceil(total / 10)
+
   const {setFlashMessage} = useFlashMessage()
 
   useEffect(() => {
 
-    api.get('notices?limit=50')
+    api.get(`notices?limit=10&offset=${displacement}`)
     .then((response) => {
       setEdicts(response.data.notices)
+      setTotal(response.data.total)
     })
 
-  }, [])
+  }, [displacement])
 
   const removeEdict = async (id) => {
     let msgType = 'success'
@@ -51,8 +57,18 @@ const Manager = () => {
     setFlashMessage(msgText,msgType)
   }
 
+  const setPage = (index) => {
+    const displacement = 10 * index
+    setCurrentPage(index)
+    setDisplacement(displacement)
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
   return (
-    <section>
+    <section className="manager_container">
       <div className="manager_header">
         <h1>Editais Cadastrados</h1>
         <Link to="/edict/add">Cadastrar Edital</Link>
@@ -69,6 +85,23 @@ const Manager = () => {
               </div>
             </div>
           ))}
+
+          <div id='manager_btn_pagination'>
+            {Array.from(Array(pages), (item, index) => {
+              return (
+                <button 
+                  onClick={() => setPage(index)} 
+                  className="btn_pagination" 
+                  value={index} 
+                  key={index}
+                  style={index === currentPage ? {backgroundColor: "#604fff", color: "#fff"}: null}
+                >
+                  {index+1}
+                </button> 
+              )
+            })}
+          </div>
+
           {edicts !== undefined && edicts.length === 0 && <p>Não há editais cadastrados</p>}
         </div>
       </section>
