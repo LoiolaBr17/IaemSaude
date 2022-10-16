@@ -23,6 +23,9 @@ import EditEdict from './components/Pages/EditEdict/EditEdict'
 /* Context */
 import {UserProvider} from './context/UserContext'
 
+/* Authentication */
+import { PrivateRoutes } from './utils/privateRoutes'
+
 const App = () => {
   return (
     <Router>
@@ -33,10 +36,10 @@ const App = () => {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
-            <Route path='/manager' element={<Manager />} />
-            <Route path='/edict/:id' element={<EdictDetails />}/>
-            <Route path='/edict/add' element={<AddEdict />} />
-            <Route path='/edict/edit/:id' element={<EditEdict />} />
+            <Route path='/manager' element={ <PrivateRoutes><Manager /></PrivateRoutes> } />
+            <Route path='/edict/:id' element={<PrivateRoutes><EdictDetails /></PrivateRoutes>}/>
+            <Route path='/edict/add' element={<PrivateRoutes><AddEdict  /></PrivateRoutes>} />
+            <Route path='/edict/edit/:id' element={<PrivateRoutes><EditEdict /></PrivateRoutes>} />
           </Routes>
         </Container>
         <Footer />
