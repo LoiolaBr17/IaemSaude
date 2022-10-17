@@ -1,6 +1,9 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 
+import { useRef } from 'react'
+import { FaBars, FaTimes } from 'react-icons/fa'
+
 import Logo from '../../../assets/img/logo.png'
 
 /* Context */
@@ -11,33 +14,50 @@ import './styles.css'
 const Navbar = () => {
     const { authenticated, logout } = useContext(Context)
 
-    return (
-        <header id="header">
-            <nav className="navbar">
-                <div className="navbar_logo">
-                    <Link to="/"><img src={Logo} alt="Logo da empresa Comsentimento" /></Link>
-                </div>
+    const navRef = useRef()
 
-                <ul>
+    const showNavbar = () => {
+        navRef.current.classList.toggle("responsive_nav")
+    }
+
+    return (
+        <header>
+            <Link to="/"><img src={Logo} alt="" /></Link>
+
+            <button className='nav-btn' onClick={showNavbar}>
+                <FaBars />
+            </button>
+
+            <nav ref={navRef}>
+                
+                
                     {authenticated ? 
                         (
                             <>
-                                <li><Link to="/">Início</Link></li>
-                                <li><Link to="/manager">Gerenciar Editais</Link></li>
-                                <li onClick={logout}>Sair</li>
+                                <Link to="/" onClick={showNavbar}>Início</Link>
+                                <Link to="/manager" onClick={showNavbar}>Gerenciar Editais</Link>
+                                <button onClick={() => {
+                                    logout()
+                                    showNavbar()
+                                }}>Sair</button>
                             </>
                         ) 
                         : 
                         (
                             <>
-                                <li><Link to="/">Início</Link></li>
-                                <li><Link to="/login">Entrar</Link></li>
+                                <Link to="/" onClick={showNavbar}>Início</Link>
+                                <Link to="/login" onClick={showNavbar}>Entrar</Link>
                             </>
                         )
 
                         }
-                </ul>
+                
+
+                <button className='nav-btn nav-close-btn' onClick={showNavbar}>
+                    <FaTimes />
+                </button>
             </nav>
+        
         </header>
     )
 }

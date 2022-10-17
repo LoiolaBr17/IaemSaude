@@ -37,7 +37,7 @@ const App = () => {
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/manager' element={ <PrivateRoutes><Manager /></PrivateRoutes> } />
-            <Route path='/edict/:id' element={<PrivateRoutes><EdictDetails /></PrivateRoutes>}/>
+            <Route path='/edict/:id' element={<EdictDetails />}/>
             <Route path='/edict/add' element={<PrivateRoutes><AddEdict  /></PrivateRoutes>} />
             <Route path='/edict/edit/:id' element={<PrivateRoutes><EditEdict /></PrivateRoutes>} />
           </Routes>
