@@ -1,10 +1,35 @@
-h1 {
+.presentation {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    height: 80vh;
+}
+
+.presentation h1 {
+    padding-top: 1em;
     text-align: center;
 }
 
-p {
+.presentation p {
     text-align: left;
-    margin-top: 2em;
+    margin: 2em;
     font-size: 1.1em;
     line-height: 1.4em;
+}
+
+.presentation .btn_Presentation {
+    background-color: transparent;
+    border: 1px solid #604fff;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+    cursor: pointer;
+    padding: 1em;
+    color: #3c3c3c;
+    margin: 0 auto;
+}
+
+.presentation .btn_Presentation:hover {
+    background-color: #604fff;
+    color: #fff;
 }

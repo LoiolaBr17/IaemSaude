@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react'
+import { useState,useEffect,useRef } from 'react'
 
 import api from '../../../utils/api'
 
@@ -15,6 +15,7 @@ const Home = () => {
     const [displacement, setDisplacement] = useState(0)
 
     const pages = Math.ceil(total / 10)
+    const edictsDivRef = useRef(null)
 
     useEffect(() => {
 
@@ -31,8 +32,7 @@ const Home = () => {
       const displacement = 10 * index
       setCurrentPage(index)
       setDisplacement(displacement)
-      window.scrollTo({
-        top: 0,
+      edictsDivRef.current.scrollIntoView({
         behavior: "smooth"
       });
     }
@@ -40,9 +40,9 @@ const Home = () => {
     return (
       <section>
         <div>
-          <Presentation />
+          <Presentation edictsContainer={edictsDivRef}/>
         </div>
-        <div>
+        <div ref={edictsDivRef}>
           {edicts && (<ContainerEdicts edicts={edicts}/>) }
           
           <div id='home_btn_pagination'>
