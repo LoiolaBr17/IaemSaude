@@ -5,12 +5,11 @@ import './styles.css'
 const EdictCard = ({edict}) => {
     return (
         <div className='card'>
-            <div className='content'>
-                <p>{edict.noticeTitle}</p> 
-                <p>Status: {edict.noticeStatus === 'true' ? 'O edital está aberto':'O edital está fechado'} </p>
-            </div>
-
-            <Link to={`/edict/${edict.noticeID}`}>Ver Detalhes</Link>
+            <p>Edital: {edict.noticeTitle}</p> 
+            <p>Status: {edict.noticeStatus === 'true' ? 'O edital está aberto':'O edital está fechado'} </p>
+            <p>Data de Início: {edict.noticeOpeningDate}</p>
+          
+            <Link to={`/edict/${edict.noticeID}`}>Ver Detalhes</Link>     
         </div>
     )
 }
