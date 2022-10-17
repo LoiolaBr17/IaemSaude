@@ -2,10 +2,19 @@
     padding: 3em;
 }
 
-.EdictDetails h3 {
+.EdictDetails h1 {
+    text-align: center;
+}
+
+.EdictDetails h3{
     margin-top: 2em;
     text-align: center;
 }
+
+.EdictDetails p{
+    margin-bottom: 1.5em;
+}
+
 .EdictDetails .openingData {
     font-weight: bold;
 }

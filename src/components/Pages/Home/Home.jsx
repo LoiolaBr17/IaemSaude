@@ -23,7 +23,6 @@ const Home = () => {
       .then((response) => {
         setEdicts(response.data.notices)
         setTotal(response.data.total)
-        console.log(response.data.notices)
       })
 
     }, [displacement])
@@ -46,7 +45,7 @@ const Home = () => {
           {edicts && (<ContainerEdicts edicts={edicts}/>) }
           
           <div id='home_btn_pagination'>
-            {Array.from(Array(pages), (item, index) => {
+            {edicts && Array.from(Array(pages), (item, index) => {
               return (
                 <button 
                   onClick={() => setPage(index)} 

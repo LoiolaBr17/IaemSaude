@@ -28,9 +28,6 @@ const EdictForm = ({handleSubmit, edictData, btnText}) => {
         }else if(edict.noticeOpeningDate === undefined || edict.noticeOpeningDate === ''){
             isValid = false
             return isValid
-        }else if(edict.noticePDFDetailsPath === undefined || edict.noticePDFDetailsPath === ''){
-            // isValid = false
-            // return isValid
         }else if(edict.noticeStatus === undefined || edict.noticeStatus === '' || edict.noticeStatus === 'escolha'){
             isValid = false
             return isValid

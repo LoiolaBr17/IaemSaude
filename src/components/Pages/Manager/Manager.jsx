@@ -88,7 +88,7 @@ const Manager = () => {
           ))}
 
           <div id='manager_btn_pagination'>
-            {Array.from(Array(pages), (item, index) => {
+            {edicts && Array.from(Array(pages), (item, index) => {
               return (
                 <button 
                   onClick={() => setPage(index)} 

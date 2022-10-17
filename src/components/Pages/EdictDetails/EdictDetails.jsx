@@ -7,7 +7,6 @@ import './styles.css'
 
 const EdictDetails = () => {
     const { id } = useParams()
-    const [title, setEdict] = useState('')
     const [dados, setDados] = useState({})
      
 

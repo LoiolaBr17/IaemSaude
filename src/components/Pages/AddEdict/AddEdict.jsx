@@ -35,7 +35,6 @@ const AddEdict = () => {
             }
         })
         .then(response => {
-             console.log(response)
              msgText = "Cadastro realizado com sucesso" 
              msgType = "success"
         })

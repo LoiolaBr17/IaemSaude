@@ -60,16 +60,13 @@ const EditEdict = () => {
                 ...edictForUpdate
             }
         })
-        .then(response => {
-            console.log(response)
-        })
+        .then(response => {})
         .catch(error => {
             msgText = 'Erro a atualizar o edital'
             msgType = 'error'
-            console.log(error)
         });
         setFlashMessage(msgText,msgType)
-        navigate('/manager')
+        navigate('/')
     }
 
     return (
