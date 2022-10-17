@@ -78,7 +78,8 @@ const Manager = () => {
         {edicts && 
           edicts.map((edict,index) => (
             <div key={index} className='manager_row'>
-              <span className="bold">Edital: {edict.noticeTitle}</span>
+              <span className="bold">ID: {edict.noticeID}</span>
+              <p>Edital: {edict.noticeTitle}</p>
               <div className="actions">
                 <Link to={`/edict/edit/${edict.noticeID}`}>Editar</Link>
                 <button onClick={() => {removeEdict(edict.noticeID)}}>Excluir</button>

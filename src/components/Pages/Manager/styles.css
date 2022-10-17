@@ -44,8 +44,22 @@
   padding: 1em;
   margin: 1em;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.manager_row .bold {
+  margin-bottom: 1em;
+}
+
+.manager_row p {
+  margin-bottom: 1em;
+}
+
+.manager_row .actions {
+  margin: 0 auto;
 }
 
 .manager_row  span {
