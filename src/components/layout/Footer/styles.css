@@ -48,3 +48,25 @@
 #btn_footer:hover {
     background-color: rgb(204, 195, 195);
 }
+
+@media (max-width: 810px){
+    .footer_Container {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer_Container .logo_footer{
+        width: 450px;
+        margin: 0;
+    }
+
+    .logo_footer img {
+        margin-top: 1em;
+        width: 100%;
+    }
+
+    .footer_Container .content_footer{
+        margin: 3em 0;
+    }
+}

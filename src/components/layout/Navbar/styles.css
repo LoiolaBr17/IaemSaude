@@ -89,3 +89,10 @@ header .nav-btn {
         font-size: 1.5rem;
     }
 }
+
+@media (max-width: 400px) {
+    #navbar_logo {
+        width: 150px;
+    }
+    
+}

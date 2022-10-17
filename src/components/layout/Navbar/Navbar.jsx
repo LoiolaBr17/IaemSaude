@@ -22,7 +22,7 @@ const Navbar = () => {
 
     return (
         <header>
-            <Link to="/"><img src={Logo} alt="" /></Link>
+            <Link to="/"><img src={Logo} alt="" id="navbar_logo"/></Link>
 
             <button className='nav-btn' onClick={showNavbar}>
                 <FaBars />
