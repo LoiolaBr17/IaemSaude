@@ -13,6 +13,7 @@ const Home = () => {
     const [currentPage, setCurrentPage] = useState(0)
     const [total, setTotal] = useState(0) 
     const [displacement, setDisplacement] = useState(0)
+    const [removeLoading, setRemoveLoading] = useState(false)
 
     const pages = Math.ceil(total / 10)
     const edictsDivRef = useRef(null)
@@ -21,6 +22,7 @@ const Home = () => {
 
       api.get(`notices?limit=10&offset=${displacement}`)
       .then((response) => {
+        setRemoveLoading(true)
         setEdicts(response.data.notices)
         setTotal(response.data.total)
       })
@@ -42,7 +44,7 @@ const Home = () => {
           <Presentation edictsContainer={edictsDivRef}/>
         </div>
         <div ref={edictsDivRef}>
-          {edicts && (<ContainerEdicts edicts={edicts}/>) }
+          {edicts && (<ContainerEdicts edicts={edicts} removeLoading={removeLoading}/>) }
           
           <div id='home_btn_pagination'>
             {edicts && Array.from(Array(pages), (item, index) => {

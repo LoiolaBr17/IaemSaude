@@ -5,12 +5,14 @@ import { useNavigate } from "react-router-dom"
 import Axios from "axios"
 
 import EdictForm from '../../Form/EdictForm/EdictForn'
+import Loading from '../../layout/Loading/Loading'
 
 import useFlashMessage from "../../../hooks/useFlashMessage"
 
 const EditEdict = () => {
     const [edict, setEdict] = useState({})
     const [token] = useState(localStorage.getItem('token') || '')
+    const [removeLoading, setRemoveLoading] = useState(false)
     const {id} = useParams()
     const {setFlashMessage} = useFlashMessage()
     let navigate = useNavigate()
@@ -35,6 +37,7 @@ const EditEdict = () => {
             const formatnoticeOpeningDate = year+"-"+month+"-"+day
             
             data.noticeOpeningDate = formatnoticeOpeningDate
+            setRemoveLoading(true)
             setEdict(data)
         })
         .catch(error => {
@@ -74,6 +77,7 @@ const EditEdict = () => {
             <div>
                 <h1>Editando o edital: {edict.noticeTitle}</h1>
             </div>
+            {!removeLoading && <Loading />}
             {edict.noticeTitle && (
                 <EdictForm 
                     handleSubmit={updateEdict}

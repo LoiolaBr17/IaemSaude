@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 
 import useFlashMessage from '../../../hooks/useFlashMessage'
 
+import Loading from "../../layout/Loading/Loading"
+
 import api from "../../../utils/api"
 import Axios from "axios"
 
@@ -14,6 +16,8 @@ const Manager = () => {
   const [currentPage, setCurrentPage] = useState(0)
   const [total, setTotal] = useState(0) 
   const [displacement, setDisplacement] = useState(0)
+  const [removeLoading, setRemoveLoading] = useState(false)
+
   const pages = Math.ceil(total / 10)
 
   const {setFlashMessage} = useFlashMessage()
@@ -22,6 +26,7 @@ const Manager = () => {
 
     api.get(`notices?limit=10&offset=${displacement}`)
     .then((response) => {
+      setRemoveLoading(true)
       setEdicts(response.data.notices)
       setTotal(response.data.total)
     })
@@ -75,6 +80,7 @@ const Manager = () => {
       </div>
 
       <div className="manager_container">
+        {!removeLoading && <Loading />}
         {edicts && 
           edicts.map((edict,index) => (
             <div key={index} className='manager_row'>
@@ -103,7 +109,7 @@ const Manager = () => {
             })}
           </div>
 
-          {edicts !== undefined && edicts.length === 0 && <p>Não há editais cadastrados</p>}
+          {edicts !== undefined && edicts.length === 0 && removeLoading &&<p>Não há editais cadastrados</p>}
         </div>
       </section>
     )
