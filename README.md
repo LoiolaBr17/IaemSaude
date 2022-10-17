@@ -5,6 +5,9 @@
 <p>Se trata de uma SPA(single page application) que se conecta com a API da empresa ComSentimento, disponibilizando assim as funcionalidades de CRUD de editais de 
 pesquisa para usuários que se encontrem autenticados. </p>
 
+<h3> Link do vídeo Executando o projeto </h3>
+https://drive.google.com/file/d/1H9fjoqZGYFsAaPD6xRF7EmlNEDFPQsBg/view
+
 <h3> Tecnologias Utilizadas </h3>
 <ul>
   <li>React.js</li>
